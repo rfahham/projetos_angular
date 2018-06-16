@@ -1,0 +1,160 @@
+
+  <header>
+    <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="javascript:;" th:href="@{/}">GROU</a>
+  
+            <button class="navbar-toggler" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+  </header>
+  
+  <main role="main">
+    <section>
+      <div class="container">
+        <form method="post" #frm="ngForm" (ngSubmit)="criar(frm)">
+                  <div class="row">
+                    <div class="col">
+                      <h2>Formulário de Requisição</h2>
+                      <div class="form-group">
+                          <label for="nome">Usuário</label>
+                          <input type="text" id="nome" name="nome"
+                            class="form-control" placeholder="Usuário" [(ngModel)]="grou.usuario"/> <!-- required -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="senha">Senha</label>
+                          <input type="text" id="senha" name="senha"
+                            class="form-control" placeholder="Senha" [(ngModel)]="grou.senha"/> 
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="nome">Duração do Teste</label>
+                          <input type="text" id="durationTimeMilis" name="durationTimeMilis"
+                            class="form-control" placeholder="Duração do Teste" [(ngModel)]="grou.durationTimeMilis"/> <!-- required -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="">Nome do Projeto</label>
+                          <input type="text" id="project" name="project"
+                            class="form-control" placeholder="Projeto" [(ngModel)]="grou.project" /> <!-- required -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="nome">TAGs</label>
+                          <input type="text" id="tags" name="tags"
+                            class="form-control" placeholder="TAGs" [(ngModel)]="grou.tags"/> <!-- required -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="email">Email</label>
+                          <input type="email" id="email" name="email"
+                            class="form-control" placeholder="Email"
+                            [(ngModel)]="grou.email" /> <!-- required email -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="nome">URI</label>
+                          <input type="text" id="uri" name="uri"
+                            class="form-control" placeholder="http://" [(ngModel)]="grou.uri"/> <!-- required -->
+                        </div>
+  
+                        <div class="form-group">
+                          <label for="">Headers</label>
+                          <input type="text" id="headers" name="headers"
+                            class="form-control" placeholder="Headers" [(ngModel)]="grou.headers"/><!-- required -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="">Conexões</label>
+                          <input type="text" id="numConn" name="numConn"
+                            class="form-control" placeholder="Número de Conexões" [(ngModel)]="grou.numConn"/><!-- required -->
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="">Loaders</label>
+                          <select class="form-control" id="parallelLoaders"  name="parallelLoaders" [(ngModel)]="grou.parallelLoaders">
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                          </select>
+                        </div>
+  
+                        <div class="form-group">
+                            <label for="">Follow Redirect</label>
+                      
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="followRedirect" value="option1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                              Sim
+                            </label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="exampleRadios" id="followRedirect" value="option2">
+                            <label class="form-check-label" for="exampleRadios2">
+                              Não
+                            </label>
+                          </div>
+  
+                        </div>
+                
+                        <div class="form-group">
+                          <label for="">Monitor</label>
+                          <input type="text" id="monitTargets" name="monitTargets"
+                            class="form-control" placeholder="zero://1.1.1.1:9100?key=1.1.1.1:8000">
+                        </div>
+  
+  
+                    </div>
+                    <div class="col ">
+                      <h2>Script</h2>
+                      <div class="back">
+                      {{ '{' }}
+                      "name":"'$RANDOM'",<br>
+  
+                      "durationTimeMillis":<label for="durationTimeMilis">{{grou.durationTimeMilis}}</label>,<br>
+  
+                      "project":"<label for="project">{{grou.project}}</label>",<br>
+  
+                      "tags":"<label for="tags">{{grou.tags}}</label>",<br>
+  
+                      "notify":["mailto:<label for="tags">{{grou.email}}</label>"],<br>
+  
+                      "properties":  {{ '{' }}<br>
+                      "requests": [ <br>
+                      {{ '{' }}"order": 1, <br>
+                      "uri": "<label for="tags">{{grou.uri}}</label>"<br>
+                       {{ '}' }}<br>
+                       ],<br>
+  
+                      "numConn": <label for="tags">{{grou.numConn}}</label>,<br>
+  
+                      "parallelLoaders": <label for="tags">{{grou.parallelLoaders}}</label>,<br>
+  
+                      <!-- "followRedirect": <label for="tags">{{grou.followRedirect}},<br> -->
+  
+                      "monitTargets" : "zero://1.1.1.1:9100?key=1.1.1.1:8000"
+                      {{ '}' }}
+                      {{ '}' }}`http://grou.globoi.com/tests
+                    </div>
+  
+              
+                      
+                    </div>
+                  </div>
+                  <button type="submit" class="btn btn-primary" [disabled]="frm.invalid">Enviar</button>
+  
+        </form>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+      <div class="container">
+      </div>
+    </footer>
+
