@@ -1,16 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+// Angular
 
-import { AppComponent } from './app.component';
+import { BrowserModule } from '@angular/platform-browser'; //prepara a aplicação pra ser executada
+import { NgModule } from '@angular/core';
+import {HttpModule} from '@angular/http'; //usado para fazer as requisições Ajax
+import { FormsModule } from '@angular/forms'; // Utilizado para formulários
+
+import { AppComponent } from './app.component'; 
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    FormsModule 
+
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [], // Serviços disponíveis - Escopo global da aplicação
+  bootstrap: [AppComponent] // Componente instanciado na aplicação
 })
 export class AppModule { }

@@ -1,0 +1,16 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div>
+    <h1>Album de fotos</h1>
+</div>
+
+
+
+    <app-painel *ngFor="let foto of fotos" titulo={{foto.titulo}} class="col-md-2">
+        <foto url="{{foto.url}}" titulo="{{foto.titulo}}"></foto>
+    </app-painel>
+
+    <div class="container marketing">
+
+
+
+

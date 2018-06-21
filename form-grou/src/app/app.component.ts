@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Http } from '@angular/http';
+
 
 import { AppService } from './app.service';
 
@@ -8,35 +9,7 @@ import { AppService } from './app.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
 
-  grou: any;
-  test: any;
-
-  constructor(private service: AppService) {}
-
-  ngOnInit() {
-    this.grou = {};
-  }
-
-  criar(frm: FormGroup) {
-    console.log(this.grou);
-    console.log(this.test);
-  }
+  constructor(http: Http) {}
 }
-
-
-
-
-
-
-// import { Component } from '@angular/core';
-
-// @Component({
-//   selector: 'app-root',
-//   templateUrl: './app.component.html',
-//   styleUrls: ['./app.component.css']
-// })
-// export class AppComponent {
-//   title = 'app';
-// }
